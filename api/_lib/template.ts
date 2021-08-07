@@ -1,3 +1,4 @@
+import { addWeeks, format } from "date-fns";
 import { readFileSync } from "fs";
 // import marked from "marked";
 import { sanitizeHtml } from "./sanitizer";
@@ -115,7 +116,9 @@ function getCss(theme: string, fontSize: string) {
 }
 
 export function getHtml(parsedReq: ParsedRequest) {
-  const { theme, fontSize } = parsedReq;
+  const { theme = "light", fontSize = "125px", weeks } = parsedReq;
+  const courseFinishDate = addWeeks(new Date(), weeks);
+
   return `<!DOCTYPE html>
 <html>
     <meta charset="utf-8">
@@ -189,7 +192,7 @@ export function getHtml(parsedReq: ParsedRequest) {
             </div>
             <div class="description">
                 <p>You'll become a software developer by</p>
-                <h2>28 March 2022</h2>
+                <h2>${format(courseFinishDate, "dd MMMM yyyy")} </h2>
             </div>
     </body>
 </html>`;
