@@ -7,24 +7,18 @@ import { ParsedRequest } from "./types";
 // const twOptions = { folder: "svg", ext: ".svg" };
 // const emojify = (text: string) => twemoji.parse(text, twOptions);
 
-const rglr = readFileSync(
-  `${__dirname}/../_fonts/Inter-Regular.woff2`
-).toString("base64");
-const bold = readFileSync(`${__dirname}/../_fonts/Inter-Bold.woff2`).toString(
-  "base64"
-);
-const mono = readFileSync(`${__dirname}/../_fonts/Vera-Mono.woff2`).toString(
-  "base64"
-);
+const rglr = readFileSync(`${__dirname}/../_fonts/Inter-Regular.woff2`).toString("base64");
+const bold = readFileSync(`${__dirname}/../_fonts/Inter-Bold.woff2`).toString("base64");
+const mono = readFileSync(`${__dirname}/../_fonts/Vera-Mono.woff2`).toString("base64");
 
 function getCss(theme: string, fontSize: string) {
-  let background = "white";
-  let foreground = "black";
+  // let background = "white";
+  // let foreground = "black";
   let radial = "lightgray";
 
   if (theme === "dark") {
-    background = "black";
-    foreground = "white";
+    //   background = "black";
+    //   foreground = "white";
     radial = "dimgray";
   }
   return `
@@ -116,7 +110,7 @@ function getCss(theme: string, fontSize: string) {
         margin: 0;
     }
     .description small {
-        font-size: 2rem;
+        font-size: 3rem;
         color: rgb(75, 85, 99);
     }
     .description h2 {
