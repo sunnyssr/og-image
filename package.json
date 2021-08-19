@@ -7,11 +7,14 @@
     "build": "tsc -p api/tsconfig.json && tsc -p web/tsconfig.json"
   },
   "dependencies": {
+    "-": "^0.0.1",
     "chrome-aws-lambda": "7.0.0",
     "date-fns": "^2.23.0",
+    "g": "^2.0.1",
     "marked": "2.0.0",
     "puppeteer-core": "7.0.0",
-    "twemoji": "13.0.1"
+    "twemoji": "13.0.1",
+    "yarn": "^1.22.11"
   },
   "devDependencies": {
     "@types/marked": "1.2.2",

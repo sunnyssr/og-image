@@ -7,9 +7,15 @@ import { ParsedRequest } from "./types";
 // const twOptions = { folder: "svg", ext: ".svg" };
 // const emojify = (text: string) => twemoji.parse(text, twOptions);
 
-const rglr = readFileSync(`${__dirname}/../_fonts/Inter-Regular.woff2`).toString("base64");
-const bold = readFileSync(`${__dirname}/../_fonts/Inter-Bold.woff2`).toString("base64");
-const mono = readFileSync(`${__dirname}/../_fonts/Vera-Mono.woff2`).toString("base64");
+const rglr = readFileSync(
+  `${__dirname}/../_fonts/Inter-Regular.woff2`
+).toString("base64");
+const bold = readFileSync(`${__dirname}/../_fonts/Inter-Bold.woff2`).toString(
+  "base64"
+);
+const mono = readFileSync(`${__dirname}/../_fonts/Vera-Mono.woff2`).toString(
+  "base64"
+);
 
 function getCss(theme: string, fontSize: string) {
   let background = "white";
@@ -41,10 +47,13 @@ function getCss(theme: string, fontSize: string) {
         font-style: normal;
         font-weight: normal;
         src: url(data:font/woff2;charset=utf-8;base64,${mono})  format("woff2");
-      }
-
+    }
+    * {
+        margin: 0;
+        padding: 0;
+    }
     body {
-        // background: ${background};
+        background: #F7FBFD;
         // background-image: radial-gradient(circle at 25px 25px, ${radial} 2%, transparent 0%), radial-gradient(circle at 75px 75px, ${radial} 2%, transparent 0%);
         // background-size: 100px 100px;
         height: 100vh;
@@ -52,12 +61,11 @@ function getCss(theme: string, fontSize: string) {
         text-align: center;
         align-items: center;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: center;
     }
 
     .altcampus-logo {
         height: 10vh;
-        margin-top: 5vh;
         width: auto;
     }
 
@@ -70,14 +78,6 @@ function getCss(theme: string, fontSize: string) {
 
     code:before, code:after {
         content: '\`';
-    }
-
-    .logo-wrapper {
-        display: flex;
-        align-items: center;
-        align-content: center;
-        justify-content: center;
-        justify-items: center;
     }
 
     .logo {
@@ -105,12 +105,24 @@ function getCss(theme: string, fontSize: string) {
         font-family: 'Inter', sans-serif;
         font-size: ${sanitizeHtml(fontSize)};
         font-style: normal;
-        color: ${foreground};
-        line-height: 1.8;
+        color: rgba(50, 50, 93, 1);
+        margin: 7rem 0;
     }
     
     .description {
-        font-size: calc(${sanitizeHtml(fontSize)}/2)
+        font-size: calc(${sanitizeHtml(fontSize)}/2);
+        color: rgba(50, 50, 93, 1);
+        line-height: normal;
+        margin: 0;
+    }
+    .description small {
+        font-size: 2rem;
+        color: rgb(75, 85, 99);
+    }
+    .description h2 {
+        color: #6773E5;
+        font-size: 5rem;
+        margin: 2rem 0;
     }
     `;
 }
@@ -128,7 +140,6 @@ export function getHtml(parsedReq: ParsedRequest) {
         ${getCss(theme, fontSize)}
     </style>
     <body>
-        <div>
             <div class="logo-wrapper">
                 <svg class="altcampus-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 841.8 296.31">
                     <title>Asset 20</title>
@@ -186,14 +197,14 @@ export function getHtml(parsedReq: ParsedRequest) {
                     </g>
                 </svg>
             </div>
-            </div>
-             <div class="heading">
-            Kab Banoge Developer?
-            </div>
-            <div class="description">
-                <p>You'll become a software developer by</p>
+            <h1 class="heading">
+                Kab Banoge Developer?
+            </h1>
+            <footer class="description">
+                <small>By</small>
                 <h2>${format(courseFinishDate, "dd MMMM yyyy")} </h2>
-            </div>
+                <p>You'll be a software developer</p>
+            </footer>
     </body>
 </html>`;
 }
